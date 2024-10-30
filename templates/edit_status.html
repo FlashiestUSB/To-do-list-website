@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% from 'bootstrap4/form.html' import render_form %}
+
+{% block title %}Edit Task{% endblock %}
+{% include 'header.html' %}
+{% block content %}
+<div class="content">
+  <h1 class="heading">{{ task.task }}</h1>
+    <p class="description">Change Completion Status from: {{task.status}} </p>
+    <div class="form-edit">{{ render_form(form) }}</div>
+    
+ 
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

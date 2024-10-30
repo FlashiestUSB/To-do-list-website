@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}My To-do-list{% endblock %}
+{% include 'header.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="heading">My To-do-list</h1>
+            <p> 
+                <table class="table table-light table-striped table-hover">
+                    <thead>
+                        
+                        <tr>
+                            <th scope="col">Task incomplete: {{items[0]}}| completed:{{items[1]}}</th>
+                            <th scope="col">Completion Status</th>
+                            <th scope="col">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in todo %}
+                            {% if row.status == "DELETE" %}
+                                {{pass}}
+                            {%else:%}
+                                <tr>
+                                <td scope="row">{{ row.task }}</td>
+                                <td scope="row">{{ row.status }}</td>
+                                <td scope="row"><a href="{{url_for('edit', id=row.id)}}">change status</a></td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <br>
+            </p>
+        </div>
+    </div>
+    
+
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
